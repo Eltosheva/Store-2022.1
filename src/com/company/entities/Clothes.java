@@ -3,6 +3,9 @@ package com.company.entities;
 import com.company.entities.base.Product;
 import com.company.enums.Size;
 
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+
 public class Clothes extends Product {
 
     private Size size;
@@ -30,5 +33,14 @@ public class Clothes extends Product {
     public Clothes setColor(String color) {
         this.color = color;
         return this;
+    }
+
+    @Override
+    public double calculateDiscount(LocalDateTime dateTimeOfOrder) {
+        if (!dateTimeOfOrder.getDayOfWeek().equals(DayOfWeek.SATURDAY)
+                        && !dateTimeOfOrder.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+            return this.getPrice() * 0.1;
+        }
+        return 0;
     }
 }

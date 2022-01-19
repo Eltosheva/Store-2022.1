@@ -2,7 +2,9 @@ package com.company.entities;
 
 import com.company.entities.base.Product;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Appliances extends Product {
 
@@ -42,5 +44,15 @@ public class Appliances extends Product {
     public Appliances setWeight(double weight) {
         this.weight = weight;
         return this;
+    }
+
+    @Override
+    public double calculateDiscount(LocalDateTime dateTimeOfOrder) {
+        if (this.getPrice() > 999 &&
+                (dateTimeOfOrder.getDayOfWeek().equals(DayOfWeek.SATURDAY)
+                        || dateTimeOfOrder.getDayOfWeek().equals(DayOfWeek.SUNDAY))) {
+            return this.getPrice() * 0.05;
+        }
+        return 0;
     }
 }

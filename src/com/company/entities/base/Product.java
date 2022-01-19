@@ -1,5 +1,7 @@
 package com.company.entities.base;
 
+import java.time.LocalDateTime;
+
 public abstract class Product {
 
     private String name;
@@ -38,4 +40,7 @@ public abstract class Product {
     public double getPrice() {
         return price;
     }
+
+
+    public abstract double calculateDiscount(LocalDateTime dateTimeOfOrder);
 }
