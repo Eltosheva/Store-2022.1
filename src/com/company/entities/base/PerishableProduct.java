@@ -22,16 +22,21 @@ public abstract class PerishableProduct extends Product {
     }
 
     @Override
-    public double calculateDiscount(LocalDateTime dateTimeOfOrder) {
+    public double getDiscountPercent(double price, LocalDateTime dateTimeOfOrder) {
 
         LocalDate startDate = expirationDate.minusDays(5);
         LocalDate dateOfOrder = dateTimeOfOrder.toLocalDate();
 
         if (!dateOfOrder.isBefore(startDate) && dateOfOrder.isBefore(expirationDate)) {
-            return this.getPrice() * 0.1;
+            return 0.1;
         } else if (dateOfOrder.equals(expirationDate)) {
-            return this.getPrice() * 0.5;
+            return 0.5;
         }
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName() + " - " + this.getBrand();
     }
 }

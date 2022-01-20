@@ -42,5 +42,5 @@ public abstract class Product {
     }
 
 
-    public abstract double calculateDiscount(LocalDateTime dateTimeOfOrder);
+    public abstract double getDiscountPercent(double price, LocalDateTime dateTimeOfOrder);
 }

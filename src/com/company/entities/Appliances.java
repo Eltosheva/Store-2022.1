@@ -47,12 +47,17 @@ public class Appliances extends Product {
     }
 
     @Override
-    public double calculateDiscount(LocalDateTime dateTimeOfOrder) {
-        if (this.getPrice() > 999 &&
+    public double getDiscountPercent(double price, LocalDateTime dateTimeOfOrder) {
+        if (price > 999 &&
                 (dateTimeOfOrder.getDayOfWeek().equals(DayOfWeek.SATURDAY)
                         || dateTimeOfOrder.getDayOfWeek().equals(DayOfWeek.SUNDAY))) {
-            return this.getPrice() * 0.05;
+            return 0.05;
         }
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName() + " " + this.getBrand() + " " + this.getModel();
     }
 }

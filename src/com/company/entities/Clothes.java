@@ -36,11 +36,16 @@ public class Clothes extends Product {
     }
 
     @Override
-    public double calculateDiscount(LocalDateTime dateTimeOfOrder) {
+    public double getDiscountPercent(double price, LocalDateTime dateTimeOfOrder) {
         if (!dateTimeOfOrder.getDayOfWeek().equals(DayOfWeek.SATURDAY)
                         && !dateTimeOfOrder.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
-            return this.getPrice() * 0.1;
+            return 0.1;
         }
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName() + " " + this.getBrand() + " " + this.getColor();
     }
 }
