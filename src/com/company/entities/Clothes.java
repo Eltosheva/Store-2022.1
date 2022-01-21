@@ -46,6 +46,6 @@ public class Clothes extends Product {
 
     @Override
     public String toString() {
-        return this.getName() + " " + this.getBrand() + " " + this.getColor();
+        return this.getName() + " "  + this.getBrand() + " " + this.size + " " + this.getColor();
     }
 }

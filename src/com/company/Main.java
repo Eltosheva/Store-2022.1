@@ -6,8 +6,8 @@ import com.company.entities.Clothes;
 import com.company.entities.Food;
 import com.company.entities.base.Product;
 import com.company.enums.Size;
-import com.company.services.CartItem;
-import com.company.services.Cashier;
+import com.company.model.CartItem;
+import com.company.services.CashierService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,7 +18,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Cashier cashier = new Cashier();
+        CashierService cashierService = new CashierService();
         Product apple = new Food("apple", "BrandA",
                 1.50, LocalDate.of(2021,6,14));
         Product milk = new Beverage("milk", "BrandM", 0.99,
@@ -33,6 +33,6 @@ public class Main {
         items.add(new CartItem(tShirt, 2));
         items.add(new CartItem(laptop, 1));
 
-        cashier.printReceipt(items, LocalDateTime.of(2021,6,14,12,34,56));
+        cashierService.printReceipt(items, LocalDateTime.of(2021,6,14,12,34,56));
     }
 }

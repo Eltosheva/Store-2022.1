@@ -1,4 +1,4 @@
-package com.company.services;
+package com.company.model;
 
 import com.company.entities.base.Product;
 
